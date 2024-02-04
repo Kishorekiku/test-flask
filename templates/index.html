@@ -1,23 +1,22 @@
-from flask import Flask, render_template, request
-import requests
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return render_template('home.html')
-
-@app.route('/helpline')
-def help():
-    return render_template('help.html')
-
-@app.route('/track', methods=['POST'])
-def track():
-    if request.method == 'POST':
-        url = request.form['user_url']
-        resp = requests.get(url)
-        redirect_ulr = resp.history
-        return render_template('track.html', endurl = resp, redirect = redirect_ulr)
-
-if __name__=='__main__':
-    app.run(debug=True)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>REDLI-HELPLINE</title>
+    {% if request.endpoint == 'helpline' %}
+    <script>
+        alert("Helpline is provided cool 🆒");
+    </script>
+    {% endif %}
+</head>
+<body><center><h3>REDLI HELPLINE</h3>
+<p>Have you ever wondered: Where does this link go? The REDLI Tool follows the path of the URL.<br>
+    It allows you to see the complete path a redirected URL goes through. It will show you the <br>
+    full redirection path of URLs, shortened links, or tiny URLs.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1kTOqkWNDKQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Coded by: JAYAKUMAR of JTECHCODE 2.O</p>
+<p>Subscribe YouTube : <a href="https://www.youtube.com/channel/UC_2ln7CZ7XjSpGDMgzsBjQA">JTECHCODE 2.O </a></p>
+<br>
+<button><a href="/">GO TO HOME</a> </button>
+</body>
+</html>
